@@ -6,7 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "cowsay": "^1.0.3",
+    "cowsay": "https://github.com/crylico/cowsay/tarball/master",
     "express": "3.4.3",
     "fortune-teller": "^0.1.0",
     "jade": "*"

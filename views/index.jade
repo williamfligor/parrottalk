@@ -1,27 +1,6 @@
 extends layout
 
 block content
-    p !{message}
+    p#cow !{message}
 
-    script.
-        function speak(voices){
-            console.log('Talking');
-            var msg = new SpeechSynthesisUtterance("#{msg}");
-            var r = Math.floor((Math.random() * voices.length) + 1);
-            msg.voice = voices[r]; // Note: some voices don't support altering params
-            window.speechSynthesis.speak(msg);
-        }
-
-        var voices = window.speechSynthesis.getVoices();
-        console.log(voices.length);
-
-        if(voices.length === 0){
-            console.log('Voices length was 0');
-            window.speechSynthesis.onvoiceschanged = function() {
-                speak(window.speechSynthesis.getVoices());
-            }
-        }else{
-            console.log('Voices length was > 0');
-            speak(window.speechSynthesis.getVoices());
-        }
-
+    script(src='/javascripts/cow.js')

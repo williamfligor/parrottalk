@@ -4,15 +4,30 @@ var fortune = require('fortune-teller'),
  * GET home page.
  */
 
-exports.index = function(req, res){
+function getCow(){
     var fort = fortune.fortune();
     fort = cowsay.say({
+        'face' : 'parrot',
         'text' : fort,
         'e': 'oO',
         'T': 'U'
     });
+
     var s = fort.replace(/[^-a-z0-9 ]/ig,'');
     fort = fort.replace(/ /g, "&emsp;");
     fort = fort.replace(/\n/g, "<br />");
-    res.render('./index', {message : fort, msg : s});
+
+    return {
+        'cowText': fort,
+        'textOnly': s
+    };
+}
+
+exports.cow = function(req, res){
+    res.send(getCow());
 };
+
+exports.index = function(req, res){
+    res.render('./index');
+};
+
