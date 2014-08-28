@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
+    app.set('port', process.env.PORT || 3000);
     app.use(express.errorHandler());
 }
 
